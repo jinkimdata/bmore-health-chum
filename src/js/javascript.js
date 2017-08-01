@@ -92,7 +92,6 @@ var bmoreHealthProfile = {
 					break;
 				case 0:
 					accent = oCyan;
-					$('.slideBtn').css('color',accent);
 					cubesSVG.selectAll('rect').remove();
 					dataLegend.selectAll('svg').remove();
 					$('.headline').addClass('active');
@@ -150,7 +149,6 @@ var bmoreHealthProfile = {
 									(Math.floor(i/10) * cubeWidth) + ")");
 						}
 					}
-
 					dataLegendSVG = dataLegend.append('svg')
 						.style('width', dataWidth)
 						.style('height',cubeWidth);
@@ -160,7 +158,7 @@ var bmoreHealthProfile = {
 						.style('height',cubeWidth - cubePadding)
 						.attr('fill',accent);
 					dataLegendSVG.append('text')
-						.text('')
+						.text('= 1 percent')
 						.style('opacity',0)
 						.attr('alignment-baseline','central')
 						.attr('dy','.5em')
@@ -177,13 +175,14 @@ var bmoreHealthProfile = {
 						.attr('stroke',darkgray)
 						.attr('class','cube');
 					dataLegendSVGAvg.append('text')
-						.text('')
+						.text('= city overall')
 						.style('opacity',0)
 						.attr('alignment-baseline','central')
 						.attr('dy','.5em')
 						.attr('transform',
 							"translate(" + cubeWidth + ",0)");
 
+					updateColors();
 					iconShape(accent, iconMan);
 					break;
 				case 1:
@@ -238,33 +237,12 @@ var bmoreHealthProfile = {
 										((Math.floor(i/10)) * cubeWidth) + ")");
 							}
 						});
-					dataLegendSVG.select('rect')
-						.transition()
-						.duration(1000)
-						.style('opacity',1);
-					dataLegendSVG.select('text')
-						.text('= 1 percent')
-						.transition()
-						.duration(1000)
-						.style('opacity',1);
-					dataLegendSVGAvg.select('rect')
-						.transition()
-						.duration(1000)
-						.style('opacity',1);
-					dataLegendSVGAvg.select('text')
-						.text('= city overall')
-						.transition()
-						.duration(1000)
-						.style('opacity',1);
+					fadeInLegend(accent);
 					break;
 				case 2:
 					accent = oCyan;
-					$('.slideBtn').css('color',accent);
-					d3.select('.headline').selectAll('span')
-						.transition()
-						.duration(200)
-						.style('color',accent)
-						.text('Demographics');
+					updateColors();
+					updateHeadline('Demographics',false);
 					$('.text').fadeOut(function(){
 						textWrap.selectAll('p')
 							.remove();
@@ -316,38 +294,12 @@ var bmoreHealthProfile = {
 										((Math.floor(i/10)) * cubeWidth) + ")");
 							}
 						});
-					dataLegendSVG.select('rect')
-						.transition()
-						.duration(1000)
-						.style('opacity',1)
-						.style('fill',accent);
-					dataLegendSVG.select('text')
-						.transition()
-						.duration(1000)
-						.style('opacity',1);
-					dataLegendSVGAvg.select('rect')
-						.transition()
-						.duration(1000)
-						.style('opacity',1);
-					dataLegendSVGAvg.select('text')
-						.transition()
-						.duration(1000)
-						.style('opacity',1);
+					fadeInLegend(accent);
 					break;
 				case 3:
 					accent = darkgreen;
-					$('.slideBtn').css('color',accent);
-					d3.select('.headline').selectAll('span')
-						.transition()
-						.duration(200)
-						.style('opacity',0);
-					d3.select('.headline').selectAll('span')
-						.transition()
-						.duration(200)
-						.delay(200)
-						.text('Socioeconomic')
-						.style('color',accent)
-						.style('opacity',1);
+					updateColors();
+					updateHeadline('Socioeconomic',true);
 					$('.text').fadeOut(function(){
 						textWrap.selectAll('p')
 							.remove();
@@ -399,25 +351,12 @@ var bmoreHealthProfile = {
 										((Math.floor(i/10)) * cubeWidth) + ")");
 							}
 						});
-					dataLegendSVG.select('rect')
-						.transition()
-						.duration(1000)
-						.style('fill',accent);
+					fadeInLegend(accent);
 					break;
 				case 4:
 					accent = oGrape;
-					$('.slideBtn').css('color',accent);
-					d3.select('.headline').selectAll('span')
-						.transition()
-						.duration(200)
-						.style('opacity',0);
-					d3.select('.headline').selectAll('span')
-						.transition()
-						.duration(200)
-						.delay(200)
-						.text('Built environment')
-						.style('color',accent)
-						.style('opacity',1);
+					updateColors();
+					updateHeadline('Built environment',true);
 					$('.text').fadeOut(function(){
 						textWrap.selectAll('p')
 							.remove();
@@ -453,6 +392,7 @@ var bmoreHealthProfile = {
 					break;
 				case 6:
 					accent = oGrape;
+					updateHeadline('Built environment',false);
 					$('.text').fadeOut(function(){
 						textWrap.selectAll('p')
 							.remove();
@@ -471,18 +411,8 @@ var bmoreHealthProfile = {
 					break;
 				case 7:
 					accent = oIndigo;
-					$('.slideBtn').css('color',accent);
-					d3.select('.headline').selectAll('span')
-						.transition()
-						.duration(200)
-						.style('opacity',0);
-					d3.select('.headline').selectAll('span')
-						.transition()
-						.duration(200)
-						.delay(200)
-						.text('Educational environment')
-						.style('color',accent)
-						.style('opacity',1);
+					updateColors();
+					updateHeadline('Educational environment',true);
 					$('.text').fadeOut(function(){
 						textWrap.selectAll('p')
 							.remove();
@@ -534,6 +464,7 @@ var bmoreHealthProfile = {
 										((Math.floor(i/10)) * cubeWidth) + ")");
 							}
 						});
+					fadeInLegend(accent);
 					break;
 				case 8:
 					$('.text').fadeOut(function(){
@@ -590,12 +521,8 @@ var bmoreHealthProfile = {
 					break;
 				case 9:
 					accent = oIndigo;
-					$('.slideBtn').css('color',accent);
-					d3.select('.headline').selectAll('span')
-						.transition()
-						.duration(200)
-						.text('Educational environment')
-						.style('color',accent);
+					updateColors();
+					updateHeadline('Educational environment',false);
 					$('.text').fadeOut(function(){
 						textWrap.selectAll('p')
 							.remove();
@@ -647,21 +574,12 @@ var bmoreHealthProfile = {
 										((Math.floor(i/10)) * cubeWidth) + ")");
 							}
 						});
+					fadeInLegend(accent);
 					break;
 				case 10:
 					accent = oRed;
-					$('.slideBtn').css('color',accent);
-					d3.select('.headline').selectAll('span')
-						.transition()
-						.duration(200)
-						.style('opacity',0);
-					d3.select('.headline').selectAll('span')
-						.transition()
-						.duration(200)
-						.delay(200)
-						.text('Safety')
-						.style('color',accent)
-						.style('opacity',1);
+					updateColors();
+					updateHeadline('Safety',true);
 					$('.text').fadeOut(function(){
 						textWrap.selectAll('p')
 							.remove();
@@ -697,12 +615,8 @@ var bmoreHealthProfile = {
 					break;
 				case 12:
 					accent = oRed;
-					$('.slideBtn').css('color',accent);
-					d3.select('.headline').selectAll('span')
-						.transition()
-						.duration(200)
-						.text('Safety')
-						.style('color',accent);
+					updateColors();
+					updateHeadline('Safety',false);
 					$('.text').fadeOut(function(){
 						textWrap.selectAll('p')
 							.remove();
@@ -721,18 +635,8 @@ var bmoreHealthProfile = {
 					break;
 				case 13:
 					accent = oPink;
-					$('.slideBtn').css('color',accent);
-					d3.select('.headline').selectAll('span')
-						.transition()
-						.duration(200)
-						.style('opacity',0);
-					d3.select('.headline').selectAll('span')
-						.transition()
-						.duration(200)
-						.delay(200)
-						.text('Health')
-						.style('color',accent)
-						.style('opacity',1);
+					updateColors();
+					updateHeadline('Health',true);
 					$('.text').fadeOut(function(){
 						textWrap.selectAll('p')
 							.remove();
@@ -750,12 +654,7 @@ var bmoreHealthProfile = {
 					iconShape(accent, iconHealth);
 					break;
 				case 14:
-					d3.select('.headline').selectAll('span')
-						.transition()
-						.duration(200)
-						.text('Health')
-						.style('color',accent)
-						.style('opacity',1);
+					updateHeadline('Health',false);
 					$('.text').fadeOut(function(){
 						textWrap.selectAll('p').remove();
 						textWrap.append('p')
@@ -906,24 +805,7 @@ var bmoreHealthProfile = {
 											((Math.floor((i+newRow)/10)) * cubeWidth) + ")");
 								}
 							});
-
-						dataLegendSVG.select('rect')
-							.transition()
-							.duration(1000)
-							.style('opacity',1)
-							.style('fill',accent);
-						dataLegendSVG.select('text')
-							.transition()
-							.duration(1000)
-							.style('opacity',1);
-						dataLegendSVGAvg.select('rect')
-							.transition()
-							.duration(1000)
-							.style('opacity',1);
-						dataLegendSVGAvg.select('text')
-							.transition()
-							.duration(1000)
-							.style('opacity',1);
+						fadeInLegend(accent);
 					}
 					break;
 				default:
@@ -961,6 +843,52 @@ var bmoreHealthProfile = {
 			$('.icon-left-open').data('toslide',toSlide-1);
 			$('.icon-right-open').data('toslide',toSlide+1);
 
+			function updateHeadline(headline,fade) {
+				if (fade) {
+					d3.select('.headline').selectAll('span')
+						.transition()
+						.duration(200)
+						.style('opacity',0);
+					d3.select('.headline').selectAll('span')
+						.transition()
+						.duration(200)
+						.text(headline)
+						.style('color',accent)
+						.style('opacity',1);
+				} else {
+					d3.select('.headline').selectAll('span')
+						.transition()
+						.duration(200)
+						.style('color',accent)
+						.text(headline);
+				}
+			}
+			function updateColors() {
+				$('.slideBtn').css('color',accent);
+				dataLegendSVG.select('rect')
+					.transition()
+					.duration(1000)
+					.style('fill',accent);
+			}
+			function fadeInLegend() {
+				dataLegendSVG.select('rect')
+					.transition()
+					.duration(1000)
+					.style('opacity',1)
+					.style('fill',accent);
+				dataLegendSVG.select('text')
+					.transition()
+					.duration(1000)
+					.style('opacity',1);
+				dataLegendSVGAvg.select('rect')
+					.transition()
+					.duration(1000)
+					.style('opacity',1);
+				dataLegendSVGAvg.select('text')
+					.transition()
+					.duration(1000)
+					.style('opacity',1);
+			}
 			function iconShape(color, array) {
 				var shapeCounter = 0;
 				cubesSVG.selectAll('rect')
