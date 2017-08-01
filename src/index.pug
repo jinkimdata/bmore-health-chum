@@ -5,7 +5,7 @@
 //- There are two datalink variables so I don't have to rewrite the link every time. 
 //- The second datalink variable declaration overwrites the first one. 
 //- When I want to switch to my server assets, I comment out the second declaration.
-- var datalink = "http://data.baltimoresun.com/news/neighborhood-health/clifton-berea"
+- var datalink = "http://data.baltimoresun.com/news/neighborhood-health/chum"
 - var datalink = ""
 
 include includes/data.pug
@@ -21,8 +21,8 @@ html(class="no-js", lang="en")
 	head
 		//Basic page needs
 		meta(charset="utf-8")
-		title Clifton-Berea health profile
-		meta(name="description", content="Take the pulse of Baltimore's neighborhoods in this in-depth data dive.")
+		title Midway/Coldstream health profile
+		meta(name="description", content="Explore Midway/Coldstream in this in-depth data dive.")
 		meta(name="author", content="The Baltimore Sun") 
 		meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1")
 		link(rel="stylesheet", type="text/css", href="http://fonts.googleapis.com/css?family=Lato|PT+Sans|Montserrat|Old+Standard+TT")
@@ -30,19 +30,19 @@ html(class="no-js", lang="en")
 		link(rel="stylesheet", type="text/css", href=datalink + "css/fontello.css")
 
 		//Facebook Stuff
-		meta(property="og:title", content="Clifton-Berea health profile")
+		meta(property="og:title", content="Midway/Coldstream health profile")
 		meta(property="og:url", content="http://data.baltimoresun.com/news/neighborhood-health")
-		meta(property="og:image", content="http://data.baltimoresun.com/news/neighborhood-health/images/thumb.jpg")
+		meta(property="og:image", content="http://data.baltimoresun.com/news/neighborhood-health/chum/images/thumb.jpg")
 		meta(property="og:site_name", content="The Baltimore Sun")
-		meta(property="og:description", content="Take the pulse of Baltimore's neighborhoods in this in-depth data dive.")
+		meta(property="og:description", content="Explore Midway/Coldstream in this in-depth data dive.")
 		meta(property="fb:app_id", content="310302989040998")
 		//Twitter Stuff
 		meta(name="twitter:card", content="summary")
 		meta(name="twitter:site", content="@baltimoresun")
 		meta(name="twitter:creator", content="@baltsundata")
-		meta(name="twitter:title", content="Clifton-Berea health profile")
-		meta(name="twitter:description", content="Take the pulse of Baltimore's neighborhoods in this in-depth data dive.")
-		meta(name="twitter:image", content="http://data.baltimoresun.com/news/neighborhood-health/images/thumb.jpg")
+		meta(name="twitter:title", content="Midway/Coldstream health profile")
+		meta(name="twitter:description", content="Explore Midway/Coldstream in this in-depth data dive.")
+		meta(name="twitter:image", content="http://data.baltimoresun.com/news/neighborhood-health/chum/images/thumb.jpg")
 		meta(name="twitter:domain", content="baltimoresun.com")
 
 		//- Ad tag, uncomment to put in ad. Be sure to uncomment the ad-for-body below.
@@ -55,7 +55,7 @@ html(class="no-js", lang="en")
 		
 		.container
 			.headline
-				h1 Clifton-Berea
+				h1 Midway / Coldstream
 					span Health Profile
 				p.source The Baltimore Sun’s analysis of Baltimore City Health Department’s 
 					br
@@ -71,9 +71,9 @@ html(class="no-js", lang="en")
 					i.slideBtn.icon-right-open(data-toslide="1")
 			.text
 					
-		//- .shareButtons
-			i.icon-twitter-squared
+		.shareButtons
 			i.icon-facebook-squared
+			i.icon-twitter-squared
 
 		//Javascript
 		//- MAKE SURE TO CHECK OUT package.json and look at the uglify script. 
