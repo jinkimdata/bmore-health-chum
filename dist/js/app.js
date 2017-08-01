@@ -122,7 +122,7 @@ var bmoreHealthProfile = {
                         d3.select(this).attr("stroke", "none").transition().duration(150).delay(20 * i).attr("fill", gray).attr("stroke", white).attr("transform", "translate(" + i % 10 * cubeWidth + "," + Math.floor(i / 10) * cubeWidth + ")");
                     }
                 });
-                fadeInLegend(accent);
+                fadeInLegend();
                 break;
 
               case 2:
@@ -144,7 +144,7 @@ var bmoreHealthProfile = {
                         d3.select(this).attr("stroke", "none").transition().duration(150).delay(20 * i).attr("fill", gray).attr("stroke", white).attr("transform", "translate(" + i % 10 * cubeWidth + "," + Math.floor(i / 10) * cubeWidth + ")");
                     }
                 });
-                fadeInLegend(accent);
+                fadeInLegend();
                 break;
 
               case 3:
@@ -166,7 +166,7 @@ var bmoreHealthProfile = {
                         d3.select(this).attr("stroke", "none").transition().duration(150).delay(20 * i).attr("fill", gray).attr("stroke", white).attr("transform", "translate(" + i % 10 * cubeWidth + "," + Math.floor(i / 10) * cubeWidth + ")");
                     }
                 });
-                fadeInLegend(accent);
+                fadeInLegend();
                 break;
 
               case 4:
@@ -223,7 +223,7 @@ var bmoreHealthProfile = {
                         d3.select(this).attr("stroke", "none").transition().duration(150).delay(20 * i).attr("fill", gray).attr("stroke", white).attr("transform", "translate(" + i % 10 * cubeWidth + "," + Math.floor(i / 10) * cubeWidth + ")");
                     }
                 });
-                fadeInLegend(accent);
+                fadeInLegend();
                 break;
 
               case 8:
@@ -263,7 +263,7 @@ var bmoreHealthProfile = {
                         d3.select(this).attr("stroke", "none").transition().duration(150).delay(20 * i).attr("fill", gray).attr("stroke", white).attr("transform", "translate(" + i % 10 * cubeWidth + "," + Math.floor(i / 10) * cubeWidth + ")");
                     }
                 });
-                fadeInLegend(accent);
+                fadeInLegend();
                 break;
 
               case 10:
@@ -366,7 +366,7 @@ var bmoreHealthProfile = {
                             d3.select(this).transition().duration(150).attr("visibility", "hidden").attr("transform", "translate(" + (i + newRow) % 10 * cubeWidth + "," + Math.floor((i + newRow) / 10) * cubeWidth + ")");
                         }
                     });
-                    fadeInLegend(accent);
+                    fadeInLegend();
                 }
                 break;
 

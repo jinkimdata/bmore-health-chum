@@ -237,7 +237,7 @@ var bmoreHealthProfile = {
 										((Math.floor(i/10)) * cubeWidth) + ")");
 							}
 						});
-					fadeInLegend(accent);
+					fadeInLegend();
 					break;
 				case 2:
 					accent = oCyan;
@@ -294,7 +294,7 @@ var bmoreHealthProfile = {
 										((Math.floor(i/10)) * cubeWidth) + ")");
 							}
 						});
-					fadeInLegend(accent);
+					fadeInLegend();
 					break;
 				case 3:
 					accent = darkgreen;
@@ -351,7 +351,7 @@ var bmoreHealthProfile = {
 										((Math.floor(i/10)) * cubeWidth) + ")");
 							}
 						});
-					fadeInLegend(accent);
+					fadeInLegend();
 					break;
 				case 4:
 					accent = oGrape;
@@ -464,7 +464,7 @@ var bmoreHealthProfile = {
 										((Math.floor(i/10)) * cubeWidth) + ")");
 							}
 						});
-					fadeInLegend(accent);
+					fadeInLegend();
 					break;
 				case 8:
 					$('.text').fadeOut(function(){
@@ -574,7 +574,7 @@ var bmoreHealthProfile = {
 										((Math.floor(i/10)) * cubeWidth) + ")");
 							}
 						});
-					fadeInLegend(accent);
+					fadeInLegend();
 					break;
 				case 10:
 					accent = oRed;
@@ -805,7 +805,7 @@ var bmoreHealthProfile = {
 											((Math.floor((i+newRow)/10)) * cubeWidth) + ")");
 								}
 							});
-						fadeInLegend(accent);
+						fadeInLegend();
 					}
 					break;
 				default:
